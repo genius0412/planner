@@ -1,0 +1,93 @@
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #45B2C1;
+    
+}
+
+.title{
+    font-size: 5em;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+}
+
+.info-button{
+    width: 1.4em;
+    height: 1.4em;
+
+    text-align: center;
+    font-size: 4em;
+    font-weight: 900;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    color: blue;
+    transition: 0.5s;
+}
+
+.info-button:hover {
+    opacity: 50%;
+    border-radius: 4em;
+}
+
+.info-button:focus {
+    outline: 0;
+}
+
+.info-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info{
+    width: 70%;
+    background-color: #FFC100;
+    border-radius: 2em;
+    margin: .3em .3em .3em .3em;
+    padding: .3em .3em .3em .3em;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 900;
+}
+
+.info-title{
+    border-radius: .4em;
+    font-size: 2.7em;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.criteria {
+    height: 1.3em;
+    width: 60%;
+    font-size: .8em;
+    border-radius: .2em;
+    font-weight: 900;
+    border: none;
+}
+
+.info-time{
+    font-size: 2em;
+}
+
+.input-time{
+    margin: 1.4em 0 0 0;
+}
+
+.time{
+    font-size: 1em;
+    font-weight: 900;
+    border: none;
+    border-radius: .2em;
+}
+
+.start-time{
+    margin: 0 2em 0 0;
+}
