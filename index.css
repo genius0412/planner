@@ -1,19 +1,11 @@
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
-@font-face {
-    font-family: 'Metropolis Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Metropolis Regular'), url('https://github.com/chrismsimpson/Metropolis/raw/master/Fonts/Webfonts/WOFF/Metropolis-Regular.woff') format('woff');
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
 body{
     padding: 0;
     margin: 0;
     text-align: center;
     background-color: #F57D1B;
-    
 }
 
 .title{
@@ -33,6 +25,7 @@ body{
 
     background: none;
     border: none;
+    border-radius: 2em;
     cursor: pointer;
     margin: 0;
     padding: 0;
@@ -57,6 +50,7 @@ body{
 }
 
 .info{
+    position: relative;
     width: 70%;
     background-color: #FFC100;
     border-radius: 2em;
@@ -81,19 +75,40 @@ body{
     border-radius: .2em;
     font-weight: 900;
     border: none;
-    background-color: #FFC100;
+    background: transparent;
     transition: 0.5s;
     padding: .1em 0 .1em .3em;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
 .criteria:hover{
-    background-color: #FFFFFF;
+    background: #FFFFFF;
 }
 
 .criteria:focus{
-    background-color: #FFFFFF;
-    outline: none;
+    background: #FFFFFF;
+    outline: 0;
+}
+
+.info-del{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #FF0000;
+    font-size: 2.4em;
+    font-weight: 900;
+    border: none;
+    background: transparent;
+    transition: 0.5s;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.info-del:hover{
+    opacity: 70%;
+}
+
+.info-del:focus{
+    outline: 0;
 }
 
 .info-time{
@@ -110,7 +125,12 @@ body{
     font-weight: 900;
     border: none;
     border-radius: .2em;
+    padding: .2em .2em .2em .2em;
     font-family: 'Nanum Gothic', sans-serif;
+}
+
+.time:focus{
+    outline: 0;
 }
 
 .start-time{
@@ -128,8 +148,8 @@ body{
     height: 2em;
     width: 7%;
     font-size: 1.3em;
-    font-weight: 900;
-    font-family: 'Metropolis Regular', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
     margin: .3em .3em .3em .3em;
     border: none;
     border-radius: .3em;
@@ -143,5 +163,6 @@ body{
 
 .button-active{
     background-color: #555555;
+    color: #FFFFFF;
     transition: 0.5s;
 }

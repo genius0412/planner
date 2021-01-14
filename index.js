@@ -1,6 +1,9 @@
 const button = document.querySelector(".info-button")
 const info = document.querySelector(".info-div")
-const weekday = document.querySelectorAll('.weekday')
+
+let delButton = document.querySelectorAll('.info-del')
+let weekday = document.querySelectorAll('.weekday')
+let flag = false;
 
 const addClass = (element, className) => {
     element.className += " " + className
@@ -16,13 +19,24 @@ const checkClass = (element, className) => {
     return check.test(element.className)
 }
 
+function buttonActive (event) {
+    event.preventDefault()
+    if(checkClass(this, "button-active")) removeClass(this, "button-active")
+    else addClass(this, "button-active")
+}
+
+function deleteInfo(){
+    this.parentElement.remove()
+}
 
 button.addEventListener("click", (event) => {
     event.preventDefault()
     console.log("new info created")
     let input = document.createElement('div')
     input.className = "info"
-    input.innerHTML += `<div class="info-title">
+    input.innerHTML += `
+    <button class="info-del">X</button>
+    <div class="info-title">
     <form onSubmit="return false;">
         <label for="criteria">이벤트: </label>
         <input type="text" class="criteria" name="criteria">
@@ -46,12 +60,18 @@ button.addEventListener("click", (event) => {
     </form>
 </div>`
     info.appendChild(input)
-})
-
-weekday.forEach(e => {
-    e.addEventListener("click", (event) => {
-        event.preventDefault()
-        if(checkClass(e, "button-active")) removeClass(e, "button-active")
-        else addClass(e, "button-active")
+    weekday.forEach(e => {
+        e.removeEventListener("click", buttonActive)
+    })
+    delButton.forEach(e => {
+        e.removeEventListener("click", deleteInfo)
+    })
+    weekday = document.querySelectorAll(".weekday")
+    delButton = document.querySelectorAll(".info-del")
+    weekday.forEach(e => {
+        e.addEventListener("click", buttonActive)
+    })
+    delButton.forEach(e => {
+        e.addEventListener("click", deleteInfo)
     })
 })
