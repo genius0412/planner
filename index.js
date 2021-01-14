@@ -8,7 +8,7 @@ button.addEventListener("click", (event) => {
     input.className = "info"
     input.innerHTML += `<div class="info-title">
         <form onSubmit="return false;">
-            <label for="criteria">기준: </label>
+            <label for="criteria">이벤트: </label>
             <input type="text" class="criteria" name="criteria">
         </form>
     </div>
