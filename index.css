@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+@font-face {
+    font-family: 'Metropolis Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Metropolis Regular'), url('https://github.com/chrismsimpson/Metropolis/raw/master/Fonts/Webfonts/WOFF/Metropolis-Regular.woff') format('woff');
+}
+
+
 body{
     padding: 0;
     margin: 0;
@@ -63,10 +71,11 @@ body{
     border-radius: .4em;
     font-size: 2.7em;
     font-family: 'Nanum Gothic', sans-serif;
+    margin: .4em 0 .4em 0;
 }
 
 .criteria {
-    height: 1.3em;
+    height: 1.2em;
     width: 60%;
     font-size: 1em;
     border-radius: .2em;
@@ -74,7 +83,7 @@ body{
     border: none;
     background-color: #FFC100;
     transition: 0.5s;
-    padding: .2em 0 .2em .3em;
+    padding: .1em 0 .1em .3em;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -89,10 +98,11 @@ body{
 
 .info-time{
     font-size: 2em;
+    margin: 0 0 1em 0;
 }
 
 .input-time{
-    margin: 1.4em 0 0 0;
+    margin: .7em 0 0 0;
 }
 
 .time{
@@ -105,4 +115,33 @@ body{
 
 .start-time{
     margin: 0 2em 0 0;
+}
+
+.weekday-picker{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.3em 0 0 0;
+}
+
+.weekday{
+    height: 2em;
+    width: 7%;
+    font-size: 1.3em;
+    font-weight: 900;
+    font-family: 'Metropolis Regular', sans-serif;
+    margin: .3em .3em .3em .3em;
+    border: none;
+    border-radius: .3em;
+    background-color: #FFFFFF;
+    transition: 0.5s;
+}
+
+.weekday:focus{
+    outline: none;
+}
+
+.button-active{
+    background-color: #555555;
+    transition: 0.5s;
 }
