@@ -21,7 +21,7 @@ body{
 
     text-align: center;
     font-size: 4em;
-    font-weight: 900;
+    font-weight: 800;
 
     background: none;
     border: none;
@@ -31,14 +31,34 @@ body{
     padding: 0;
     color:  #417321;
     transition: 0.5s;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.info-button:hover {
+.time-button{
+    width: 6em;
+    height: 1.9em;
+
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 2em;
+    cursor: pointer;
+    margin: 0 0 .3em 0;
+    padding: .05em .05em .05em .05em;
+    color: #F57D1B;
+    transition: 0.5s;
+}
+
+.info-button:hover, .time-button:hover{
     opacity: 50%;
     border-radius: 4em;
 }
 
-.info-button:focus {
+.info-button:focus, .time-button:focus{
     outline: 0;
 }
 
@@ -59,6 +79,7 @@ body{
     font-family: 'Nanum Gothic', sans-serif;
     font-weight: 900;
     transition: 0.5s;
+    opacity: 100%;
 }
 
 .info-title{
@@ -151,6 +172,7 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     margin: .3em .3em .3em .3em;
+    cursor: pointer;
     border: none;
     border-radius: .3em;
     background-color: #FFFFFF;
@@ -195,6 +217,7 @@ body{
 }
 
 .plan-info{
+    position: relative;
     width: 9%;
     background-color: #FFFFFF;
     font-size: 2em;
