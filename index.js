@@ -46,6 +46,7 @@ const loadButton = document.querySelector(".load-info")
 let delButton = document.querySelectorAll('.info-del')
 let timeButton = document.querySelectorAll('.time-button')
 let weekday = document.querySelectorAll('.weekday')
+let timeDel = document.querySelectorAll('.time-del')
 let flag = false;
 
 
@@ -79,11 +80,32 @@ function deleteInfo(){
     }, 700)
 }
 
+function delTime(){
+    const el = this.parentElement
+    this.parentElement.remove()
+
+    const btn = document.createElement('button')
+    const txt = document.createTextNode("시간 추가")
+    addClass(btn, "time-button")
+    btn.appendChild(txt)
+    el.appendChild(btn)
+
+    timeButton.forEach(e => {
+        e.removeEventListener("click", addTime)
+    })
+    timeButton = document.querySelectorAll(".time-button")
+    timeButton.forEach(e => {
+        e.addEventListener("click", addTime)
+    })
+}
+
 function addTime(){
-    const el = this.parentElement.parentElement;
+    const el = this.parentElement
     this.remove()
     const divContainer = document.createElement('div')
+    addClass(divContainer, "relative")
     divContainer.innerHTML += `
+    <button class="time-del">X</button>
     <div class="weekday-picker">
         <button class="weekday">SUN</button>
         <button class="weekday">MON</button>
@@ -100,10 +122,16 @@ function addTime(){
             <label for="end-time" class="input-time">종료 시간: </label>
             <input type="time" class="time input-time end-time" name="end-time">
         </form>
-    </div>
-    <button class="time-button">시간 추가</button>`
+    </div>`
+
+    const btn = document.createElement('button')
+    const txt = document.createTextNode("시간 추가")
+    addClass(btn, "time-button")
+    btn.appendChild(txt)
+
 
     el.appendChild(divContainer)
+    el.appendChild(btn)
 
     weekday.forEach(e => {
         e.removeEventListener("click", buttonActive)
@@ -111,17 +139,23 @@ function addTime(){
     timeButton.forEach(e => {
         e.removeEventListener("click", addTime)
     })
+    timeDel.forEach(e => {
+        e.removeEventListener("click", delTime)
+    })
     weekday = document.querySelectorAll(".weekday")
     timeButton = document.querySelectorAll(".time-button")
+    timeDel = document.querySelectorAll('.time-del')
     weekday.forEach(e => {
         e.addEventListener("click", buttonActive)
     })
     timeButton.forEach(e => {
         e.addEventListener("click", addTime)
     })
+    timeDel.forEach(e => {
+        e.addEventListener("click", delTime)
+    })
 }
 
-/* 
 const getInfo = () => {
     for(let i=0; i<events.length; i++){
         events.delEvent(0)
@@ -129,22 +163,30 @@ const getInfo = () => {
 
     const info = document.querySelectorAll(".info")
     info.forEach(e => {
-        const title = e.children[1].children[0].children[1].value
-        let weekdayArr = new Array()
-        const startTime = e.children[3].children[0].children[1].value
-        const endTime = e.children[3].children[0].children[3].value
-
+        let obj = { title: e.children[1].children[0].children[1].value }
+        let time = new Array(7)
         for(let i=0; i<7; i++){
-            if(checkClass(e.children[2].children[i], "button-active")) weekdayArr.push(i)
+            time[i] = new Array()
         }
 
-        console.log(`Title: ${title}\nWeekday: ${weekdayArr}\nStart: ${startTime}, End: ${endTime}`)
-        events.newEvent(title, weekdayArr, startTime, endTime)
+        for(let i=2; i<=e.children.length-2; i++){
+            const startTime = e.children[i].children[2].children[0].children[1].value
+            const endTime = e.children[i].children[2].children[0].children[3].value
+
+            for(let j=0; j<7; j++){
+                if(checkClass(e.children[i].children[1].children[j], "button-active")) time[j].push({start: startTime, end: endTime})
+            }
+            obj["time"] = time
+        }
+
+        console.log(`Title: ${obj.title}`)
+        console.log(obj)
     })
 }
 
 
 const showPlanner = () => {
+    /*
     const planInfo = document.querySelectorAll(".plan-info")
     planInfo.forEach(e => e.innerHTML = "")
     
@@ -156,9 +198,8 @@ const showPlanner = () => {
             addClass(eventDiv, "event")
             eventDiv.appendChild(text)
         })
-    })
+    })*/
 }
-*/
 
 newButton.addEventListener("click", (event) => {
     event.preventDefault()
@@ -173,7 +214,7 @@ newButton.addEventListener("click", (event) => {
         <input type="text" class="criteria" name="criteria" value="이벤트 이름">
     </form>
 </div>
-<div><div><button class="time-button">시간 추가</button></div></div>`
+<button class="time-button">시간 추가</button>`
     infoContainer.appendChild(newInfo)
     weekday.forEach(e => {
         e.removeEventListener("click", buttonActive)
@@ -198,11 +239,8 @@ newButton.addEventListener("click", (event) => {
     })
 })
 
-/** 
 loadButton.addEventListener("click", (event) => {
     event.preventDefault()
     getInfo()
     showPlanner()
 })
-
-*/
