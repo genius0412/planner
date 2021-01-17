@@ -5,7 +5,7 @@ body{
     padding: 0;
     margin: 0;
     text-align: center;
-    background-color: #F57D1B;
+    background-color: #E0BBE4;
 }
 
 .title{
@@ -29,7 +29,7 @@ body{
     cursor: pointer;
     margin: 0;
     padding: 0;
-    color:  #417321;
+    color: #957DAD;
     transition: 0.5s;
     font-family: 'Open Sans', sans-serif;
 }
@@ -72,7 +72,7 @@ body{
 .info{
     position: relative;
     width: 70%;
-    background-color: #FFC100;
+    background-color: #B19CD9;
     border-radius: 2em;
     margin: .3em .3em 2em .3em;
     padding: .3em .3em .3em .3em;
@@ -115,7 +115,7 @@ body{
     position: absolute;
     top: 10px;
     right: 10px;
-    color: #FF0000;
+    color: #CCCCCC;
     font-size: 2.4em;
     font-weight: 900;
     border: none;
