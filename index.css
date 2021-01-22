@@ -8,6 +8,19 @@ body{
     background-color: #E0BBE4;
 }
 
+.title-div{
+    height: 30vh;
+    line-height: 30vh;
+    background-color: rgba(255, 255, 255, .3);
+    vertical-align: middle;
+}
+
+.title-logo{
+    height: 25vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
 .title{
     font-size: 5em;
     font-weight: 900;
@@ -16,18 +29,19 @@ body{
 }
 
 .info-button{
-    width: 1.4em;
-    height: 1.4em;
+    width: 23vh;
+    height: 7vh;
 
     text-align: center;
-    font-size: 4em;
+    font-size: 3vh;
     font-weight: 800;
+    font-style: italic;
 
-    background: none;
+    background-color: #FFFFFF;
     border: none;
     border-radius: 2em;
     cursor: pointer;
-    margin: 0;
+    margin: 1em 1em 1em 1em;
     padding: 0;
     color: #957DAD;
     transition: 0.5s;
@@ -49,7 +63,7 @@ body{
     cursor: pointer;
     margin: 0 0 .3em 0;
     padding: .05em .05em .05em .05em;
-    color: #F57D1B;
+    color: #957DAD;
     transition: 0.5s;
 }
 
@@ -85,8 +99,10 @@ body{
 .info-title{
     border-radius: .4em;
     font-size: 2.7em;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-style: italic;
+    font-family: 'Open Sans', 'Nanum Gothic', sans-serif;
     margin: .4em 0 .4em 0;
+    color: #555555;
 }
 
 .criteria {
@@ -94,12 +110,13 @@ body{
     width: 60%;
     font-size: 1em;
     border-radius: .2em;
-    font-weight: 900;
+    font-weight: 800;
     border: none;
     background: transparent;
     transition: 0.5s;
     padding: .1em 0 .1em .3em;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Open Sans', 'Nanum Gothic', sans-serif;
+    color: #555555;
 }
 
 .criteria:hover{
@@ -115,7 +132,7 @@ body{
     position: absolute;
     top: 10px;
     right: 10px;
-    color: #CCCCCC;
+    color: #555555;
     font-size: 2.4em;
     font-weight: 900;
     border: none;
@@ -165,20 +182,22 @@ body{
 .info-time{
     font-size: 2em;
     margin: 0 0 1em 0;
+    font-family: 'Open Sans', 'Nanum Gothic', sans-serif;
 }
 
 .input-time{
     margin: .7em 0 0 0;
+    font-family: 'Open Sans', 'Nanum Gothic', sans-serif;
 }
 
 .time{
     font-size: 1em;
-    font-weight: 900;
-    width: 5em;
+    font-weight: 600;
+    width: 7em;
     border: none;
     border-radius: .2em;
     padding: .2em .2em .2em .2em;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Open Sans', 'Nanum Gothic', sans-serif;
 }
 
 .time:focus{
@@ -257,5 +276,23 @@ body{
     text-align: center;
     border-top-left-radius: .4em;
     border-bottom-right-radius: .4em;
+    margin: .2em;
+}
+
+.event{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    background-color: #FFFFFF;
+    font-size: .5em;
+    line-height: 1em;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-top-left-radius: 1em;
+    border-bottom-right-radius: 1em;
     margin: .2em;
 }

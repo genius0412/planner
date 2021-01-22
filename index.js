@@ -1,44 +1,3 @@
-class PlanEvent{
-    constructor(title, weekday, start, end){
-        /* 
-        * weekday = array 
-        * if start length = 1 : time is always the same
-        * else 0~ weekday order
-        */
-
-        this.title = title
-        this.weekday = weekday
-        this.start = start
-        this.end = end;
-    }
-}
-
-class Events {
-    constructor(){
-        this.events = []
-    }
-
-    newEvent(title, weekday, start, end){
-        const e = new PlanEvent(title, weekday, start, end)
-        this.events.push(e)
-        return e
-    }
-
-    get allEvents(){
-        return this.events
-    }
-
-    get length(){
-        return this.events.length
-    }
-
-    delEvent(idx){
-        if(idx > this.events.length || idx < 0) return
-        this.events.splice(idx, 1)
-    }
-}
-
-const events = new Events()
 const newButton = document.querySelector(".info-button")
 const infoContainer = document.querySelector(".info-div")
 const loadButton = document.querySelector(".load-info")
@@ -117,15 +76,15 @@ function addTime(){
     </div>
     <div class="info-time">
         <form onSubmit="return false;">
-            <label for="start-time" class="input-time">시작 시간: </label>
+            <label for="start-time" class="input-time">Start: </label>
             <input type="time" class="time input-time start-time" name="start-time">
-            <label for="end-time" class="input-time">종료 시간: </label>
+            <label for="end-time" class="input-time">End: </label>
             <input type="time" class="time input-time end-time" name="end-time">
         </form>
     </div>`
 
     const btn = document.createElement('button')
-    const txt = document.createTextNode("시간 추가")
+    const txt = document.createTextNode("Add Time")
     addClass(btn, "time-button")
     btn.appendChild(txt)
 
@@ -157,48 +116,53 @@ function addTime(){
 }
 
 const getInfo = () => {
-    for(let i=0; i<events.length; i++){
-        events.delEvent(0)
-    }
-
     const info = document.querySelectorAll(".info")
-    info.forEach(e => {
-        let obj = { title: e.children[1].children[0].children[1].value }
-        let time = new Array(7)
-        for(let i=0; i<7; i++){
-            time[i] = new Array()
-        }
+    let events = new Array()
 
+    info.forEach(e => {
+        let obj = { title: e.children[1].children[0].children[1].value, time: new Array(7) }
+        for(let i=0; i<7; i++){
+            obj.time[i] = new Array()
+        }
+    
         for(let i=2; i<=e.children.length-2; i++){
             const startTime = e.children[i].children[2].children[0].children[1].value
             const endTime = e.children[i].children[2].children[0].children[3].value
 
             for(let j=0; j<7; j++){
-                if(checkClass(e.children[i].children[1].children[j], "button-active")) time[j].push({start: startTime, end: endTime})
+                if(checkClass(e.children[i].children[1].children[j], "button-active")) obj.time[j].push({start: startTime, end: endTime})
             }
-            obj["time"] = time
         }
 
-        console.log(`Title: ${obj.title}`)
-        console.log(obj)
+        events.push(obj)
     })
+    return events;
 }
 
 
-const showPlanner = () => {
-    /*
+const showPlanner = (events) => {
     const planInfo = document.querySelectorAll(".plan-info")
     planInfo.forEach(e => e.innerHTML = "")
-    
-    events.allEvents.forEach(e => {
-        e.weekday.forEach(w => {
-            if(e.weekday.length > e.start.length)
-            let eventDiv = document.createElement('div')
-            const text = document.createTextNode(`${e.title}\n${e.start} ~ ${e.end}`)
-            addClass(eventDiv, "event")
-            eventDiv.appendChild(text)
-        })
-    })*/
+
+    events.forEach(e => {
+        for(let i=0; i<7; i++){
+            e.time[i].forEach(d => {
+                const el = document.createElement('div')
+                addClass(el, "event")
+
+                let st = d.start.split(":"), ed = d.end.split(":")
+                let stime = st[0]*60 + st[1]
+                let etime = ed[0]*60 + ed[1]
+
+                el.style.position = "absolute"
+                el.style.top = stime/150 + "px"
+                el.style.height = (etime-stime)/150 + "px"
+
+                el.innerHTML = `${e.title}<br/>${d.start} ~ ${d.end}`
+                planInfo[i].appendChild(el)
+            })
+        }
+    })
 }
 
 newButton.addEventListener("click", (event) => {
@@ -210,11 +174,11 @@ newButton.addEventListener("click", (event) => {
     <button class="info-del">X</button>
     <div class="info-title">
     <form onSubmit="return false;">
-        <label for="criteria">이벤트: </label>
-        <input type="text" class="criteria" name="criteria" value="이벤트 이름">
+        <label for="criteria">Event: </label>
+        <input type="text" class="criteria" name="criteria" value="An Event Title">
     </form>
 </div>
-<button class="time-button">시간 추가</button>`
+<button class="time-button">Add Time</button>`
     infoContainer.appendChild(newInfo)
     weekday.forEach(e => {
         e.removeEventListener("click", buttonActive)
@@ -241,6 +205,7 @@ newButton.addEventListener("click", (event) => {
 
 loadButton.addEventListener("click", (event) => {
     event.preventDefault()
-    getInfo()
-    showPlanner()
+    const events = getInfo()
+    console.log(events)
+    showPlanner(events)
 })
